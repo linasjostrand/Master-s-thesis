@@ -1,0 +1,54 @@
+%************************************************
+\chapter{Future work}
+\label{chp:future_work}
+%************************************************
+
+Smooth data 
+
+
+%%%%%%%%% skriv att de kanske har fel. typ haha. att värt att undersöka hur bra consumer grade gps kan vara. att deras metod kanske kan funka om gps är lite bättre än det vi har. DriveMe är 5--10 m. Ändå kanske värt att testa med deras metod och se vad som händer. Dock inget vi har gjort... 
+\cite{yang:lanelev} present an approach for change detection at lane level using \ac{GPS} data. A fuzzy-logic road network matching method is used and both topological and geometrical changes to the road network were detected, such as added and closed lanes or lane-changing and turning rules. However, \cite{yang:lanelev} estimates the positional accuracy needed for this type of change detection to about 1 m. % \textbf{This level of accuracy cannot currently be obtained with consumer grade \ac{GPS}.} This method could however be explored in future work. %%%%%%%%%
+
+
+
+Furthermore, evaluation is needed of the pros and cons of where the change detection computation should be performed, either on the probe or in the cloud.
+
+\url{https://www.researchgate.net/publication/303845819_INTERSECTION_DETECTION_BASED_ON_QUALITATIVE_SPATIAL_REASONING_ON_STOPPING_POINT_CLUSTERS}
+\url{https://www.researchgate.net/publication/321723253_Extraction_of_Road_Intersections_from_GPS_Traces_Based_on_the_Dominant_Orientations_of_Roads} 
+road intersection extraction
+
+
+\url{https://www.researchgate.net/publication/283753322_Inferring_Directed_Road_Networks_from_GPS_Traces_by_Track_Alignment}
+DTW, other way of creating map
+
+
+confidence needs to be evaluated \\
+more evaluation measures \\
+other map fuse \\
+map matcher - we only use ONE.
+
+
+map match to previous map, the parts that are no matched will be considered new roads (p.4 in hymu , map updating), k-means clustering to create new roads (not so good according to all kinds of litterature..)
+
+(doha team refers to hymu)
+
+
+The reason for this is that the precision of consumer-grade \ac{GPS}-data is not currently good enough to obtain lane-level information.
+
+
+We think it would be a good idea to use the evaluation methods more for the map fusion. The current implementation relies on edge weights and time stamps only (AND DISTANCE RAMP GREJ??).
+
+
+
+parallellisera delar av kod
+
+kolla mer på anders artikel med time stamp konfidens grejs för uppdatering
+
+\subsubsection{Confidence test}
+Suggested in GLUE \textbf{??}, need to decide whether we should accept all the generated roads. Here, we propose a function to evaluate the confidence of a generated road. A longer road with more matched trajectories tends to be more likely to be real. Further, a smoother road should have a higher confidence.
+
+
+One could utilize the path based distance measure as a local signature in order to identify and visualize portions of high similarity in the maps - could be used for change detection.
+
+Faster and more accurate map-matching, used by most map updating pipelines.
+H. Wei, Y. Wang, G. Forman, Y. Zhu, and H. Guan. Fast Viterbi map matching with tunable weight functions. In GIS, 2012. (SIGSPATIAL Cup).

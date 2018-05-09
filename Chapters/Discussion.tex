@@ -1,0 +1,106 @@
+%************************************************
+\chapter{Discussion}
+\label{chp:discussion}
+%************************************************
+
+
+Time, performance
+method choice
+Only detect larger changes
+Confidence - how? 
+    - change in density a change as well
+    - edge weight (density)
+    - Glue
+    - very tricky how to handle this
+    
+
+Takes long time to create map using map inference. Can use other methods for creating a map. But not as good???
+HyMu
+
+
+%========================================================================%
+\section{Map generation}
+%========================================================================%
+
+% to large area
+Metoden breaks on området är för stort - hur stort är för stort???? Athen large funkade iaf inte.
+
+% segments
+ska vi nämna att den inte skapar segment rätt. dock inte intressant eftersom vi inte använder oss av dem. men man hade kanske velat göra det... hm. borde kunna lätt skriva en rutin egentligen som plockar ut segment från edges and nodes. typ det vi gör i eval + fuse sen ändå väl?
+
+% lane level
+not appropriate method for lane level---too much tuning.
+
+
+%========================================================================%
+\section{Fuse}
+%========================================================================%
+
+% denna text är ok, bind ihop det lite bara med något.
+
+\cite{fuse} Especially, they discuss the fact that many automated algorithms often does not utilise the fact that many cities already have rather accurate maps. Therefore, they suggest to always use a high-quality slowly updated map as a base map and update it with an inferred map. Especially since inferred maps have several problems such as; poor coverage, visually confusing outlook and low topological accuracy. The last one of these are \cite{fuse} biggest concern. Many methods for creating inferred maps usually either miss connections between segments or creates inaccurate connections between segments.
+
+Due to these problems the major map vendors have human operators verifying changes. The downside with this is the time latency.
+
+
+
+%========================================================================%
+\section{Change detection}
+%========================================================================%
+
+Both F-score and path based edge signature can be seen as a measure of how probable an edge is. Can be used for change detection. Also, edge weight and time stamps are taken into consideration when fusing maps.
+
+
+%========================================================================%
+\section{Ground truth}
+%========================================================================%
+
+\citep{ming}
+completeness using lenght
+buffer method to get position accuracy. 
+
+%%%%%%%%%%%%%%%%
+\citep{haklay}
+Within the framework of Web Mapping 2.0 applications, the most striking example of a geographical application is the OpenStreetMap project. OpenStreetMap aims to create a free digital map of the world and is implemented through the engagement of participants in a mode similar to software development in Open Source projects. The information is collected by many participants, collated on a central database and distributed in multiple digital formats through the World Wide Web (Web). This type of information was termed ‘Volunteered Geographical Information’ (VGI) by Mike Goodchild (2007). However, to date there has been no systematic analysis of the quality of VGI. 
+
+%%%%%%%%%%%%%%%%
+VGI
+\url{https://www.researchgate.net/publication/262159489_Lowering_the_barrier_how_the_what-you-see-is-what-you-map_paradigm_enables_people_to_contribute_volunteered_geographic_information}
+
+%%%%%%%%%%%%
+\textbf{skriva att det inte finns någon helt korrekt karta - vad är då ground truth?}
+
+p. 11
+\textit{While Steve Coast, the founder of OSM, stated ‘it’s important to let go of the concept of completeness’ (GISPro, 2007, p.22), it is important to know which areas are well covered and which are not – otherwise, the data can be assumed to be unusable. Furthermore, the analysis of completeness can reveal other characteristics that are relevant to other VGI projects.} \citep{haklay}
+
+Completeness – this is a measure of the lack of data; that is, an assessment of how many objects are expected to be found in the database but are missing as well as an assessment of excess data that should not be included. In other words, how comprehensive the coverage of real-world objects is. \citep{haklay}
+%%%%%%%%%%%%
+\textbf{borde vi ha related evaluation framework? typ att många som jämför kartor jämför längd exempelvis. och många som jämför grafer kollar connectivity? vi vill göra något mellanting}
+% https://www.geog.uni-heidelberg.de/md/chemgeo/geog/gis/agile2010_zielstra_zipf_final5.pdf
+
+
+
+%========================================================================%
+\section{Method}
+%========================================================================%
+
+\subsection{Map generation}
+
+Chose to accept nbr matched trajectoreus with 2 or more. Sufficient when we do not add to map if weight to small. 
+
+
+\subsection{Evaluation methods}
+
+\subsubsection{Path based}
+
+They say that the theoretical guarantees are only valid when requiring that the graphs are d-separated and that no vertex is of degree three. 
+
++ No tuning parameters must be adjusted in order to get a meaningful distance measure.
+
+If the exact distance of the path traveled matters (e.g., in computing the cost of transporting goods), then using the F-score may be preferred; whereas, if the topology of the map is important (e.g., when deciding if roads have been closed or new roads added), then the path-based distance would be preferred \citep{pathbased}.
+
+
+\subsubsection{Topo}
+Sampla från en edge och ut. Se F-score för det. Får in topologi, edge signature med topo.
+
+

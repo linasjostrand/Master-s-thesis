@@ -1,0 +1,820 @@
+
+
+% osm facts and VGI - unclear where it should be right now...
+% found in anders german osm, http://www.ucl.ac.uk/~ucfamha/OSM%20data%20analysis%20070808_web.pdf
+@article{haklay,
+author = {Mordechai Haklay},
+title ={How Good is Volunteered Geographical Information? A Comparative Study of OpenStreetMap and Ordnance Survey Datasets},
+journal = {Environment and Planning B: Planning and Design},
+volume = {37},
+number = {4},
+pages = {682-703},
+year = {2010},
+doi = {10.1068/b35097},
+URL = {https://doi.org/10.1068/b35097},
+eprint = {https://doi.org/10.1068/b35097}
+}
+
+% ================================================================================================================ %
+
+
+
+
+
+
+%%% Biagioni gis12 paper
+@inproceedings{biagioni:gis12,
+    author    = {Biagioni, James and Eriksson, Jakob},
+    title     = {Map Inference in the Face of Noise and Disparity},
+    booktitle = {Proceedings of the 20th International Conference on Advances in Geographic Information Systems},
+    series    = {SIGSPATIAL '12},
+    year      = {2012},
+    isbn      = {978-1-4503-1691-0},
+    location  = {Redondo Beach, California},
+    pages     = {79--88},
+    numpages  = {10},
+    url       = {http://doi.acm.org/10.1145/2424321.2424333},
+    doi       = {10.1145/2424321.2424333},
+    acmid     = {2424333},
+    publisher = {ACM},
+    address   = {New York, NY, USA},
+    keywords  = {GPS, map generation, map inference}
+}
+
+
+% ====================== Articles for Introduction ====================== %
+
+% ---------- Misc ---------- %
+
+% Zenuity
+@online{zenuity,
+  author = {Zenuity AB},
+  %title = {{MS Windows NT} Kernel Description},
+  year = 2018,
+  url = {http://www.zenuity.com/},
+  urldate = {2018-04-18}
+}
+
+% tomtom says 15% of roads change each year
+@misc{tomtom,
+    author = {{TomTom}},
+    title = {TomTom automotive: The journey starts here},
+    url = {https://automotive.tomtom.com/wordpress/wp-content/uploads/2017/01/Brochure-TomTom-Automotive-1.pdf},
+    year = {2017},
+    month = {1},
+    urldate = {2018-04-09}
+}
+
+% Map war
+@misc{mapwar,
+    author = {Seth Fiegerman},
+    title = {The billion dollar war over maps}, 
+    url = {http://money.cnn.com/2017/06/07/technology/business/maps-wars-self-driving-cars/index.html},
+    month = {6},
+    year = {2017},
+    urldate = {2018-03-16}
+}
+
+% -------====== Related work =====------ %
+
+
+% ---------- Mapping ---------- %
+
+% GraphSLAM
+@article{GraphSLAM,
+ author = {Thrun, Sebastian and Montemerlo, Michael},
+ title = {The Graph SLAM Algorithm with Applications to Large-Scale Mapping of Urban Structures},
+ journal = {Int. J. Rob. Res.},
+ issue_date = {May-June 2006},
+ volume = {25},
+ number = {5-6},
+ month = may,
+ year = {2006},
+ issn = {0278-3649},
+ pages = {403--429},
+ numpages = {27},
+ doi = {10.1177/0278364906065387},
+ acmid = {1131426},
+ publisher = {Sage Publications, Inc.},
+ address = {Thousand Oaks, CA, USA},
+ keywords = {SLAM, localization, mapping, robot navigation},
+} 
+
+% Old article on moving sensor platforms
+@article{1988robot, 
+author={Moravec, Hans P.}, 
+journal={AI Magazine}, 
+title={Sensor fusion in certainty grids for mobile robots}, 
+year={1988}, 
+volume={9}, 
+number={2}, 
+pages={61–74}, 
+%doi={https://doi.org/10.1609/aimag.v9i2.676}, 
+%month={Summer}
+}
+
+% Other article on moving sensor platforms
+@Article{Teller2003,
+author={Teller, Seth
+and Antone, Matthew
+and Bodnar, Zachary
+and Bosse, Michael
+and Coorg, Satyan
+and Jethwa, Manish
+and Master, Neel},
+title={Calibrated, Registered Images of an Extended Urban Area},
+journal={International Journal of Computer Vision},
+year={2003},
+month={6}, %Jun
+day={01},
+volume={53},
+number={1},
+pages={93-107},
+issn={1573-1405},
+doi={10.1023/A:1023035826052},
+}
+
+% indoor mapping for robot nav
+@InProceedings{robnav,
+author={Portugal, David
+and Rocha, Rui P.},
+editor="Filipe, Joaquim
+and Fred, Ana",
+title="Retrieving Topological Information for Mobile Robots Provided with Grid Maps",
+booktitle="Agents and Artificial Intelligence",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="204--217",
+abstract="In the context of mobile robotics, it is crucial for the robot to have a consistent representation of the surrounding area. However, common grid maps used in robotics do not provide any evidence as to connectivity, making it harder to find appropriate paths to particular points on the site. Therefore, abstracting the environment where mobile robots carry out some mission can be of a great benefit.",
+isbn="978-3-642-36907-0"
+}
+
+% ---------- Image ---------- %
+
+% Linear algebra for image change detection. General 1
+@article{linalg, 
+author={E. Durucan and T. Ebrahimi}, 
+journal={Proceedings of the IEEE}, 
+title={Change detection and background extraction by linear algebra}, 
+year={2001}, 
+volume={89}, 
+number={10}, 
+pages={1368-1381}, 
+keywords={image processing;lighting;linear algebra;real-time systems;surveillance;Wronskian detection;background extraction;change detection;evaluation procedure;image vector model;linear algebra;linear dependence;linear independence;real-time image analysis;surveillance;varying illumination conditions;Art;Cost accounting;Data mining;Detectors;Layout;Lighting;Linear algebra;Photometry;Surveillance;Vectors}, 
+doi={10.1109/5.959336}, 
+ISSN={0018-9219}, 
+month={10},%Oct
+}
+
+% General 2 change detection methods NOT USED, CURRENTLY
+@ARTICLE{imsurvey, 
+author={R. J. Radke and S. Andra and O. Al-Kofahi and B. Roysam}, 
+journal={IEEE Transactions on Image Processing}, 
+title={Image change detection algorithms: a systematic survey}, 
+year={2005}, 
+volume={14}, 
+number={3}, 
+pages={294-307}, 
+doi={10.1109/TIP.2004.838698}, 
+ISSN={1057-7149}, 
+month={3},%March
+}
+
+% General 3 change detection methods
+@inproceedings{pixelbased,
+title={Two-Dimensional Change Detection Methods - Remote Sensing Applications},
+author={Murat Ilsever and Cem \"{U}nsalan},
+booktitle={Springer Briefs in Computer Science},
+year={2012}
+}
+
+
+% ---------- Radar/lidar?? ---------- %
+
+
+
+% ---------- GPS - satellit ---------- %
+
+% Satellite 1 imaging approach
+@article{satellite,
+author= {Klang, D.},
+title={Automatic Detection of Changes in Road Databases Using Satellite Imagery},
+journal={Proc. of International Archives of Photogrammetry and Remote Sensing},
+%ISSN={},
+%publisher={},
+year={1998},
+%month={},
+volume={32},
+%number={},
+pages={293-298},
+URL={https://ci.nii.ac.jp/naid/10020786979/en/},
+%DOI={},
+}
+
+% Satellite 2 imaging approach
+@INPROCEEDINGS{sat2, 
+author={A. Mancini and E. Frontoni and P. Zingaretti},
+booktitle={2010 20th International Conference on Pattern Recognition}, 
+title={Road Change Detection from Multi-Spectral Aerial Data}, 
+year={2010}, 
+volume={}, 
+number={}, 
+pages={448-451}, 
+doi={10.1109/ICPR.2010.118}, 
+ISSN={1051-4651}, 
+month={8},%Aug
+}
+
+
+
+% ---------- GPS - HMM ---------- %
+
+% HMM Map matching article
+@inproceedings{newson:hmm,
+ author = {Newson, Paul and Krumm, John},
+ title = {Hidden Markov Map Matching Through Noise and Sparseness},
+ booktitle = {Proceedings of the 17th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},
+ series = {GIS '09},
+ year = {2009},
+ isbn = {978-1-60558-649-6},
+ location = {Seattle, Washington},
+ pages = {336--343},
+ numpages = {8},
+ doi = {10.1145/1653771.1653818},
+ acmid = {1653818},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {driving routes, location, map matching, road map},
+} 
+
+%Hummel, B., Map Matching for Vehicle Guidance, in Dynamic and Mobile GIS: Investigating Space and Time, J. Drummond and R. Billen, Editors. 2006, CRC Press: Florida.
+@book{hummel,
+  author    = {Hummel, B, J. Drummond and R. Billen}, 
+  title     = {Map Matching for Vehicle Guidance, in Dynamic and Mobile GIS: Investigating Space and Time},
+  publisher = {CRC Press},
+  year      = 2006,
+  isbn      = {9780849390920}
+}
+
+% Spatio-Temporal data mining
+@phdthesis{kondaveeti:clusters,
+ author = {Kondaveeti, Anirudh},
+ advisor = {Runger, George},
+ title = {Spatio-temporal Data Mining to Detect Changes and Clusters in Trajectories},
+ year = {2012},
+ isbn = {978-1-267-81915-4},
+ note = {AAI3547294},
+ publisher = {Arizona State University},
+ address = {Tempe, AZ, USA}
+}
+
+% Lane level gps change
+@article{yang:lanelev,
+author = {Xue Yang and Luliang Tang and Kathleen Stewart and Zhen Dong and Xia Zhang and Qingquan Li},
+title = {Automatic change detection in lane-level road networks using GPS trajectories},
+journal = {International Journal of Geographical Information Science},
+volume = {32},
+number = {3},
+pages = {601-621},
+year  = {2018},
+publisher = {Taylor \& Francis},
+doi = {10.1080/13658816.2017.1402913},
+}
+
+% gps
+@misc{gps,
+  title={Global positioning system},
+  author={Masumoto, Yutaka},
+  year={1993},
+  month={5},
+  publisher={Google Patents},
+  note={US Patent 5,210,540}
+}
+
+% radar
+@article{radar,
+  title={Introduction to radar},
+  author={Skolnik, Merrill I},
+  journal={Radar Handbook},
+  volume={2},
+  year={1962},
+  publisher={McGraw-hill}
+}
+
+% lidar
+@article{lidar,
+  title={Light Detection and Ranging},
+  author={Olsen, RC},
+  year={2016},
+  publisher={International Society for Optics and Photonics}
+}
+
+% ---------- GPS - state of the art ---------- %
+
+% k-means
+@incollection{edelkamp,
+  title={Route planning and map inference with global positioning traces},
+  author={Edelkamp, Stefan and Schr{\"o}dl, Stefan},
+  booktitle={Computer science in perspective},
+  pages={128--151},
+  year={2003},
+  publisher={Springer}
+}
+
+% trace merging
+@inproceedings{cao,
+  title={From GPS traces to a routable road map},
+  author={Cao, Lili and Krumm, John},
+  booktitle={Proceedings of the 17th ACM SIGSPATIAL international conference on advances in geographic information systems},
+  pages={3--12},
+  year={2009},
+  organization={ACM}
+}
+
+% kde
+@article{davies,
+  title={Scalable, distributed, real-time map generation},
+  author={Davies, Jonathan J and Beresford, Alastair R and Hopper, Andy},
+  journal={IEEE Pervasive Computing},
+  volume={5},
+  number={4},
+  pages={47--54},
+  year={2006},
+  publisher={IEEE}
+}
+
+% kde 1
+@article{kde24,
+  title={An analysis of topological properties of digitized binary pictures using local features},
+  author={Yokoi, Shigeki and Toriwaki, Jun-Ichiro and Fukumura, Teruo},
+  journal={Computer Graphics and Image Processing},
+  volume={4},
+  number={1},
+  pages={63--73},
+  year={1975},
+  publisher={Elsevier}
+}
+
+% kde 2
+@article{kde25,
+  title={Voronoi diagrams—a survey of a fundamental geometric data structure},
+  author={Aurenhammer, Franz},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={23},
+  number={3},
+  pages={345--405},
+  year={1991},
+  publisher={ACM}
+}
+
+% Chalmers
+@mastersthesis{
+chalmers,
+author={Kristiansen, Jonas and Liljeroth, Anthon},
+title={Continuous mining of GPS traces to infer high precision knowledge of road networks},
+publisher={Department of Signals and Systems, Chalmers University of Technology},
+place={Göteborg},
+year={2016},
+series={Ex - Institutionen för signaler och system, Chalmers tekniska högskola, no: EX021/2016},
+}
+
+% ====================== Articles theory ====================== %
+
+% stanford theory on HMM
+@book{HMMstanford,
+  author    = {Daniel Jurafsky and James H. Martin}, 
+  title     = {Speech and Language Processing},
+  publisher = {Pearson},
+  year      = 2008,
+  edition   = 2,
+  isbn      = {0131873210}
+}
+
+% central problems of HMM
+@ARTICLE{Rabiner, 
+author={L. R. Rabiner}, 
+journal={Proceedings of the IEEE}, 
+title={A tutorial on hidden Markov models and selected applications in speech recognition}, 
+year={1989}, 
+volume={77}, 
+number={2}, 
+pages={257-286}, 
+keywords={Markov processes;speech recognition;balls-in-urns system;coin-tossing;discrete Markov chains;ergodic models;hidden Markov models;hidden states;left-right models;probabilistic function;speech recognition;Distortion;Hidden Markov models;Mathematical model;Multiple signal classification;Signal processing;Speech recognition;Statistical analysis;Stochastic processes;Temperature measurement;Tutorial}, 
+doi={10.1109/5.18626}, 
+ISSN={0018-9219}, 
+month={2}, %Feb
+}
+
+% NOT USED, baum-welch
+@ARTICLE{Dempster77, 
+author={A. P. Dempster and N. M. Laird and D. B. Rubin}, 
+journal={Journal of the Royal Statistical Society, Series B}, 
+title={Maximum likelihood from incomplete data via the EM algorithm}, 
+year={1977}, 
+volume={39}, 
+number={1}, 
+pages={1-38}, 
+}
+
+% viterbi
+@ARTICLE{viterbi, 
+author={G. D. Forney}, 
+journal={Proceedings of the IEEE}, 
+title={The viterbi algorithm}, 
+year={1973}, 
+volume={61}, 
+number={3}, 
+pages={268-278}, 
+keywords={Algorithm design and analysis;Convolutional codes;Decoding;Digital communication;Helium;Markov processes;Recursive estimation;State estimation;Stochastic processes;Viterbi algorithm}, 
+doi={10.1109/PROC.1973.9030}, 
+ISSN={0018-9219}, 
+month={3}, %March
+}
+
+% kde
+@article{terrell1992,
+author = "Terrell, George R. and Scott, David W.",
+doi = "10.1214/aos/1176348768",
+fjournal = "The Annals of Statistics",
+journal = "Ann. Statist.",
+month = "9",
+number = "3",
+pages = "1236--1265",
+publisher = "The Institute of Mathematical Statistics",
+title = "Variable Kernel Density Estimation",
+volume = "20",
+year = "1992"
+}
+
+% gaussian filter
+@book{bookImageAnalysis,
+  title={Computer vision: algorithms and applications},
+  author={Szeliski, Richard},
+  year={2010},
+  publisher={Springer Science \& Business Media},
+  pages={118}
+}
+
+% Binary Skeletonization
+@article{Zhang:skeleton,
+ author = {Zhang, T. Y. and Suen, C. Y.},
+ title = {A Fast Parallel Algorithm for Thinning Digital Patterns},
+ journal = {Commun. ACM},
+ issue_date = {March 1984},
+ volume = {27},
+ number = {3},
+ month = mar,
+ year = {1984},
+ issn = {0001-0782},
+ pages = {236--239},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/357994.358023},
+ doi = {10.1145/357994.358023},
+ acmid = {358023},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {parallel algorithm, skeletonization, thinning of digital patterns},
+} 
+
+% graph theory
+@book{giacomo,
+  title={Lecture Notes in Network Dynamics},
+  author={Giacomo Como and Fabio Fagnani},
+  year={2018},
+  publisher={Draft},
+}
+
+% combustion 
+@INPROCEEDINGS{21inBiagioni, 
+author={W. Shi and S. Shen and Y. Liu}, 
+booktitle={2009 12th International IEEE Conference on Intelligent Transportation Systems}, 
+title={Automatic generation of road network map from massive GPS, vehicle trajectories}, 
+year={2009}, 
+volume={}, 
+number={}, 
+pages={1-6}, 
+doi={10.1109/ITSC.2009.5309871}, 
+ISSN={2153-0009}, 
+month={10},
+}
+
+% DP - hittar inte artikeln
+@article{dp,
+author = {Douglas, David and Peucker, Thomas},
+year = {1973},
+month = {10},
+pages = {112-122},
+title = {Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature},
+volume = {10},
+booktitle = {Cartographica: The International Journal for Geographic Information and Geovisualization}
+}
+
+
+% precision and recall
+@article{precisionrecall,
+author = {Powers, David},
+year = {2008},
+month = {1},
+pages = {},
+title = {Evaluation: From Precision, Recall and F-Factor to ROC, Informedness, Markedness \& Correlation},
+volume = {2},
+booktitle = {Mach. Learn. Technol.}
+}
+
+% precision and recall image
+@misc{wiki:prerecall,
+   author = "Wikimedia Commons",
+   title = "File:Precisionrecall.svg --- Wikimedia Commons{,} the free media repository",
+   year = "2016",
+   url = "https://commons.wikimedia.org/w/index.php?title=File:Precisionrecall.svg&oldid=220068947",
+   note = "[Online; accessed 19-April-2018]"
+}
+
+% Distance measures (hausdorff and fréchet)
+@article{distances,
+author = {Alt, Helmut and Godau, Michael},
+year = {1995},
+month = {3},
+pages = {75-91},
+title = {Computing the Fréchet Distance between Two Polygonal Curves},
+volume = {5},
+booktitle = {Int. J. Comput. Geometry Appl.}
+}
+
+% Haversine distance
+@ARTICLE{haversine,
+   author = {{Sinnott}, R.W.},
+    title = {Virtues of the Haversine},
+  journal = {skytel},
+     year = 1984,
+    month = 12,
+   volume = 68,
+    pages = {158},
+   adsurl = {http://adsabs.harvard.edu/abs/1984S\%26T....68R.158S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+% road network comp survey (NOT USED maybe elsewhere later)
+@article{rncomp,
+  title={New techniques in road network comparison},
+  author={Ahmed, Mahmudatada and Fasy, Brittany Terese and Wenk, Carola},
+  journal={Grace Hopper Celebr. Women Comput.(Oct. 2014). Online proceedings},
+  year={2014}
+}
+
+%-----Graph comp-----%
+
+@article{subsurvey,
+title = "Frequent Subgraph Mining Algorithms---A Survey",
+journal = "Procedia Computer Science",
+volume = "47",
+pages = "197 - 204",
+year = "2015",
+note = "Graph Algorithms, High Performance Implementations and Its Applications ( ICGHIA 2014 )",
+issn = "1877-0509",
+doi = "https://doi.org/10.1016/j.procs.2015.03.198",
+url = "http://www.sciencedirect.com/science/article/pii/S1877050915004664",
+author = "T. Ramraj and R. Prabhakar",
+}
+
+@article{subgraphmatching,
+author = {Koutra, Danai and Parikh, Ankur and Ramdas, Aaditya and Xiang, Jing},
+year = {2018},
+month = {3},
+pages = {},
+title = {Algorithms for Graph Similarity and Subgraph Matching}
+}
+
+@InProceedings{graphlet_kernels,
+  title = 	 {Efficient graphlet kernels for large graph comparison},
+  author = 	 {Nino Shervashidze and SVN Vishwanathan and Tobias Petri and Kurt Mehlhorn and Karsten Borgwardt},
+  booktitle = 	 {Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {488--495},
+  year = 	 {2009},
+  editor = 	 {David van Dyk and Max Welling},
+  volume = 	 {5},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Hilton Clearwater Beach Resort, Clearwater Beach, Florida USA},
+  month = 	 {4},
+  publisher = 	 {PMLR},
+}
+
+@INPROCEEDINGS{shortestpath, 
+author={K. M. Borgwardt and H. P. Kriegel}, 
+booktitle={Fifth IEEE International Conference on Data Mining (ICDM'05)}, 
+title={Shortest-path kernels on graphs}, 
+year={2005}, 
+volume={}, 
+number={},
+pages={8}, 
+doi={10.1109/ICDM.2005.132}, 
+ISSN={1550-4786}, 
+month={11},
+}
+
+
+% ====================== Sources for Data ====================== %
+
+% Chicago bus data, how they referenced it
+@misc{chicago,
+    author = {{BITS Networked Systems Laboratory}},
+    title = {Chicago dataset},
+    url = {https://www.cs.uic.edu/bin/view/Bits/Software},
+    year = {2012},
+    urldate = {2018-02-02}
+}
+
+% DriveMe project
+@online{volvo,
+    author = {Volvo Car Corporation VCC},
+    year = 2018,
+    url = {https://www.volvocars.com/intl/buy/explore/intellisafe/autonomous-driving/drive-me},
+    urldate = {2018-04-20}
+}
+
+% Open street map
+@online{osm,
+  author = {OpenStreetMap},
+  %title = {{MS Windows NT} Kernel Description},
+  year = 2018,
+  url = {http://www.openstreetmap.org/},
+  urldate = {2018-01-18}
+}
+
+% OSMnx
+@article{osmnx,
+    title = "OSMnx: New methods for acquiring, constructing, analyzing, and visualizing complex street networks",
+    journal = "Computers, Environment and Urban Systems",
+    volume = "65",
+    pages = "126 - 139",
+    year = "2017",
+    issn = "0198-9715",
+    doi = "https://doi.org/10.1016/j.compenvurbsys.2017.05.004",
+    url = "http://www.sciencedirect.com/science/article/pii/S0198971516303970",
+    author = "Geoff Boeing",
+    keywords = "Street network, Urban form, Urban design, Transportation, Resilience, OpenStreetMap, GIS, Complex networks, Visualization, Python"
+}
+
+% project data
+@online{lant1,
+  author = {Christina Lilje and Andreas Engfeldt and Lotti Jivall},
+  title = {Introduktion till GNSS},
+  year = 2007,
+  url = {https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/gps-och-matning/geodesi/rapporter_publikationer/rapporter/lmv-rapport_2007_11.pdf},
+  urldate = {2018-04-20}
+}
+
+% project data
+@online{lant2,
+  author = {Lantmäteriet},
+  title = {Jordellipsoiden},
+  year = 2012,
+  url = {https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/gps-och-matning/referenssystem/3d-system/ellipsoid.pdf},
+  urldate = {2018-04-20}
+}
+
+% project data
+@online{lant3,
+  author = {Lantmäteriet},
+  title = {{RT 90 - SWEREF 99}},
+  year = 2018,
+  url = {https://www.lantmateriet.se/en/Maps-and-geographic-information/GPS-and-geodetic-surveys/Geodesy/Transformations/RT-90---SWEREF-99/},
+  urldate = {2018-04-20}
+}
+
+
+
+% ====================== Evaluation ====================== %
+
+% topo
+@INPROCEEDINGS{4inBiagioni,
+    author = {James Biagioni and Jakob Eriksson},
+    title = {Inferring road maps from Global Positioning System traces: Survey and comparative evaluation},
+    booktitle = {In Transportation Research Board, 91st Annual},
+    year = {2012},
+    doi = {10.3141/2291-08}
+}
+ 
+
+% path-based
+@article{pathbased,
+ author = {Ahmed, Mahmuda and Fasy, Brittany Terese and Hickmann, Kyle S. and Wenk, Carola},
+ title = {A Path-Based Distance for Street Map Comparison},
+ journal = {ACM Trans. Spatial Algorithms Syst.},
+ volume = {1},
+ number = {1},
+ month = {7},
+ year = {2015},
+ issn = {2374-0353},
+ pages = {3:1--3:28},
+ articleno = {3},
+ numpages = {28},
+ doi = {10.1145/2729977},
+ acmid = {2729977},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+
+
+%Inferring Road Maps from Global Positioning System Traces, December 2012, Transportation Research Record Journal of the Transportation Research Board 2291(-1):61-71, DOI10.3141/2291-08
+
+% ----- Compare VGI and other map ----- %
+
+@article{ming,
+  title={Quality analysis of open street map data},
+  author={Wang, Ming and Li, Qingquan and Hu, Qingwu and Zhou, Meng},
+  journal={ISPRS Int. Arch. Photogramm. Remote Sens. Spat. Inf. Sci},
+  pages={155--158},
+  year={2013},
+  publisher={Citeseer}
+}
+
+@inproceedings{ziel,
+  title={A comparative study of proprietary geodata and volunteered geographic information for Germany},
+  author={Zielstra, Dennis and Zipf, Alexander},
+  booktitle={13th AGILE international conference on geographic information science},
+  volume={2010},
+  year={2010}
+}
+
+% ------------------------------------- % 
+
+% ====================== Fuse ====================== %
+
+% google maps
+@online{googlemaps,
+  author = {Google},
+  title = {Google Maps},
+  year = 2018,
+  url = {https://www.google.com/maps},
+  urldate = {2018-05-08}
+}
+
+% map fuse
+@inproceedings{fuse,
+author = {Stanojevic, Rade and Abbar, Sofiane and Thirumuruganathan, Saravanan and De Francisci Morales, Gianmarco and Chawla, Sanjay and Filali, Fethi and Aleimat, Ahid},
+year = {2018},
+month = {1},
+pages = {91-109},
+title = {Road Network Fusion for Incremental Map Updates},
+isbn = {978-3-319-71469-1}
+}
+
+% crowd atlas
+@inproceedings{crowdatlas,
+author = {Wang, Yin and Liu, Xuemei and Wei, Hong and Forman, George and Chen, Chao and Zhu, Yanmin},
+year = {2013},
+month = {6},
+pages = {27-40},
+title = {CrowdAtlas: Self-updating maps for cloud and personal use},
+booktitle = {MobiSys 2013 - Proceedings of the 11th Annual International Conference on Mobile Systems, Applications, and Services}
+}
+
+% cobweb
+@inproceedings{cobweb,
+ author = {Shan, Zhangqing and Wu, Hao and Sun, Weiwei and Zheng, Baihua},
+ title = {COBWEB: A Robust Map Update System Using GPS Trajectories},
+ booktitle = {Proceedings of the 2015 ACM International Joint Conference on Pervasive and Ubiquitous Computing},
+ series = {UbiComp '15},
+ year = {2015},
+ isbn = {978-1-4503-3574-4},
+ location = {Osaka, Japan},
+ pages = {927--937},
+ numpages = {11},
+ doi = {10.1145/2750858.2804286},
+ acmid = {2804286},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+% hymu - NOT REFERENCED YET
+@InProceedings{hymu,
+author="Wang, Tao
+and Mao, Jiali
+and Jin, Cheqing",
+editor="Candan, Sel{\c{c}}uk
+and Chen, Lei
+and Pedersen, Torben Bach
+and Chang, Lijun
+and Hua, Wen",
+title="HyMU: A Hybrid Map Updating Framework",
+booktitle="Database Systems for Advanced Applications",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="19--33",
+isbn="978-3-319-55699-4"
+}
+
+% glue - NOT REFERENCED YET
+@inproceedings{glue,
+author = {Wu, Hao and Tu, Chuanchuan and Sun, Weiwei and Zheng, Baihua and Su, Hao and Wang, Wei},
+year = {2015},
+month = {10},
+pages = {683-692},
+title = {GLUE: a Parameter-Tuning-Free Map Updating System}
+}
+
+

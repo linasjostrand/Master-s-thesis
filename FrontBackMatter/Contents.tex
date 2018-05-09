@@ -1,0 +1,19 @@
+%*******************************************************
+% Contents
+%*******************************************************
+\renewcommand{\cftpartpagefont}{\phantom} 
+\phantomsection
+\pdfbookmark{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{1}  % decides how many chapters/sections/subsections etc that should be displayed
+\begingroup 
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    
+    \tableofcontents
+\endgroup
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}} 
+
+\begingroup 
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+\endgroup

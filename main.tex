@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper,twoside,openright,titlepage,fleqn,%
+               headinclude,dottedtoc,footinclude,BCOR=20mm,%
+               numbers=noenddot,cleardoublepage=empty,%
+               tablecaptionabove]{scrreprt}
+\usepackage[swedish,american]{babel}
+%\usepackage[applemac]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{varioref}
+\usepackage[style=philosophy-modern,hyperref,square,natbib]{biblatex}
+\usepackage{chngpage}
+\usepackage{calc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage{makeidx}
+%\usepackage{fixltx2e}
+\usepackage{relsize}
+\usepackage{lipsum}
+\usepackage[subfig,beramono,pdfspacing,listings]{classicthesis} 
+% eulerchapternumbers,
+\usepackage{csquotes} % warning recommended this should be loaded
+\usepackage{arsclassica}
+\setcounter{secnumdepth}{5}
+
+%
+% ---------------------------------------------------------------
+% Packages we have imported
+\usepackage{float}
+\usepackage[notmath]{sansmathfonts}
+\renewcommand*{\rmdefault}{cmr} % nice font again
+\usepackage[subfigure]{tocloft}
+\usepackage{acronym} %<<<<<<<<<<<
+\usepackage{outline, textcomp, gensymb}
+% No indent
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{1mm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[bottom]{footmisc}
+\usepackage{geometry}
+\geometry{a4paper, top=1.5cm, left=3.0cm, right=4.0cm, bottom=2.0cm, includehead, includefoot}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages}
+\def\depend{\mathbin{%
+  \ooalign{$\perp$\cr$\,\perp$\cr\scalebox{1.3}[.5]{\raisebox{5pt}{$\mkern2mu/$}}}}}
+
+% Spacing left, above, below for titles
+\titlespacing{\section}{0pt}{20pt}{10pt}
+\titlespacing{\subsection}{0pt}{10pt}{5pt}
+\titlespacing{\subsubsection}{0pt}{10pt}{5pt}
+\titlespacing{\paragraph}{0pt}{5pt}{0pt} 
+\usepackage{multirow}
+
+% pipeline/flowchart
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{inout} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=teal!30]
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=teal!10]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% change margin on one page
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+% fix centering of images on page
+\newlength{\myimageoversize}
+\newsavebox{\myimage}
+\newcommand{\mycenter}[1]{%
+\savebox{\myimage}{#1}
+\settowidth{\myimageoversize}{\usebox{\myimage}}
+\addtolength{\myimageoversize}{-\textwidth}
+\setlength{\leftskip}{-0.5\myimageoversize}
+\noindent
+\usebox{\myimage}}
+
+% Appendices
+\usepackage[toc,page]{appendix}
+\renewcommand{\appendixname}{Appendix}
+\renewcommand{\appendixpagename}{Appendix}
+
+
+% ---------------------------------------------------------------%
+
+
+\input{arsclassica-settings}
+\makeatletter
+\g@addto@macro \normalsize {%
+\setlength{\belowdisplayskip}{1pt} \setlength{\belowdisplayshortskip}{1pt}      % equations at proper distance from text
+\setlength{\abovedisplayskip}{-10pt} \setlength{\abovedisplayshortskip}{-10pt}
+}
+\makeatother
+\begin{document}
+
+\pagenumbering{roman}
+\pagestyle{plain}
+% ---------------------------------------------------------------%
+% Force before / after spacing
+%\setlength{\abovedisplayskip}{3mm}
+%\setlength{\belowdisplayskip}{3mm}
+
+% ---------------------------------------------------------------%
+
+%******************************************************************
+% Front matter
+%******************************************************************
+% Title page
+\input{FrontBackMatter/Titlepage}
+\input{FrontBackMatter/Titleback}
+\clearpage
+% Abstract
+\input{FrontBackMatter/Abstract}
+\cleardoublepage
+% Acknowledgements
+\input{FrontBackMatter/Acknowledgements}
+\cleardoublepage
+% Acronyms
+\input{FrontBackMatter/Acronyms.tex}
+%\cleardoublepage
+% Dictionary
+%\input{FrontBackMatter/Dictionary.tex}
+
+\pagestyle{scrheadings} % <- ?
+\cleardoublepage
+% Contents
+\input{FrontBackMatter/Contents}
+\cleardoublepage
+
+% List of figures (add to table of contents)
+\addcontentsline{toc}{chapter}{\tocEntry{\listfigurename}} 
+\listoffigures 
+\cleardoublepage
+% List of tables (add to table of contents)
+\addcontentsline{toc}{chapter}{\tocEntry{\listtablename}}  
+\listoftables
+\cleardoublepage
+%******************************************************************
+% Main matter
+%******************************************************************
+\pagenumbering{arabic}
+\input{Chapters/Introduction.tex}
+\input{Chapters/Theory.tex}
+\input{Chapters/Method.tex}
+\input{Chapters/Data.tex}
+\input{Chapters/Experimental_Setup.tex}
+\input{Chapters/Results.tex}
+\input{Chapters/Discussion.tex}
+\input{Chapters/Conclusions.tex}
+\input{Chapters/Future_Work.tex}
+\input{Chapters/Work_Division.tex}
+\input{Chapters/Appendix.tex}
+% *****************************************************************
+% Back matter
+%******************************************************************
+\clearpage
+\input{FrontBackMatter/Bibliography.tex}
+\clearpage
+\input{FrontBackMatter/Index.tex}
+\end{document}

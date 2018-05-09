@@ -1,0 +1,190 @@
+%************************************************
+\chapter{Introduction}
+\label{chp:intro}
+%************************************************
+
+\textit{This chapter gives a motivation and background to the problem as well as a proper problem formulation with goals and limitations. We further present related work within the area as well as an outline of the thesis.}
+
+\section{Motivation}
+
+Technology advancement in autonomous driving is accelerating. For the technology to be safe it is crucial for the vehicles to have an updated map, meaning that all vehicles have a correct and identical representation of the current road network. This makes change detection in the maps of great importance, in order to continuously understand what needs to be updated. There are many types of changes to be considered---temporary changes such as road construction work or permanent changes such as a new road. 
+
+An approach of map change detection is to automatically create a new map given observations of the road network and then look for changes relative to a base map. An inferred map is one where aggregated data is used to create the map. In particular, at locations where no manually created maps are available inferred maps may be the only option. The approach was to use probe sourced (or crowd sourced) maps and in particular \ac{GPS} position data to detect changes. The probes, or cars, are collecting \ac{GPS} data which is aggregated and used to create an inferred map, hence probe sourced. The probes will share this common map and if a change is detected by a probe it will send that information to the cloud, to which all cars are connected, and if needed update the map.
+
+The master's thesis was written in collaboration with Zenuity with headquarter in Gothenburg. Zenuity is a joint venture between Volvo Cars and Autoliv from April 2017. It is a pure software company delivering leading advanced driver assistance, highly automated driving and cloud based automotive software. The goal is set to have vehicles driving autonomously on roads in 2021 \citep{zenuity}.
+
+\section{Background}
+
+%\textbf{https://placesjournal.org/article/mappings-intelligent-agents/} WHY MAPS ARE IMPORTANT FOR SELF-DRIVING CARS
+
+Having access to a precise, correct and up-to-date map is crucial for \ac{AD} and \ac{ADAS}. Map vendor TomTom reports that 15\% of roads change each year in some way \citep{tomtom}. The map, usually referred to as a \ac{HD}-map, needs to have information not only of basic turn directions, but of street signs, traffic signs and positions of lane markings and barriers down to centimetre precision. Manually creating and maintaining these \ac{HD} maps is currently costing mapping companies billions, and is still only done in a few larger cities. In busy areas or regions with road closures or construction work updates may be necessary several times a day \citep{mapwar}. One way to automatically improve the quality of maps in real-time is to use the information gathered from several vehicles, also called \textit{probes} during different trips. 
+%This is unfeasible both in cost and in resources. 
+
+%, a market engaging hundreds of actors. 
+
+Basically, each probe is evaluating the road environment by using some on-board sensors such as cameras, \ac{GPS}, \ac{RADAR} or \ac{LiDAR}. \ac{GPS} is a radio-navigation system based on satellites \citep{gps}. \ac{RADAR} uses radio waves to detects objects \citep{radar}. \ac{LiDAR} also detect objects but using a \ac{LASER}, meaning shorter wavelengths which makes it useful in other ways \citep{lidar}. Both \ac{LiDAR} and \ac{RADAR} can be used to produce range-based maps.
+
+The sensors can provide information on range, angle, size, reflectivity, etc., of surrounding objects. This is enough to describe the scene and for updating the maps. However, due to limitations of sensors field of view, occlusion or other effects that can influence sensor performance aggregation of sensor data is often necessary to build a precise map. All probes are sending the extracted information to a central server. The server shall decide how to aggregate the data to the old map if any change is detected. \textit{The purpose of this thesis is therefore to propose methods and algorithms to detect changes in the environment to update the existing maps. This is done by utilising inferred maps created using \ac{GPS} position data.}
+
+
+\section{Purpose and problem formulation}
+
+The main purpose of this thesis was to evaluate road network change detection methods when only consumer grade \ac{GPS}-data is available. 
+
+The scope of the thesis was limited to detecting changes on road network level, not lane-level. Changes on lane-level will also be investigated to see if the precision of consumer grade \ac{GPS} is high enough for the method to distinguish between adjacent lanes. The change detection methods suggested in the thesis should enable us to handle % The reason for this is that the precision of consumer-grade \ac{GPS}-data is not currently good enough to obtain lane-level information.
+\begin{itemize}
+    \item Additional roads
+    \item Classify what type of change---temporary or permanent (semi-static or static)?
+    \item Removed road---time stamp.
+\end{itemize}
+The probe sourced map was compared to ground truth, in this case a manually verified map. This enables us to measure the performance of the map generation methods. Furthermore, a performance metric was established using different statistical measures to determine the accuracy of the detection methods. 
+% To ensure autonomous driving systems are robust enough to adapt to different circumstances, the performance evaluation is of great importance. 
+
+\textbf{make code available}
+\textbf{\cite{biagioni:gis12} inspiration för bra introduktion}
+
+
+
+%========================================================================%
+\section{Definitions}
+%========================================================================%
+
+In table \ref{tab:def} some expressions and definitions are presented that occurs frequently throughout the report. Most of them are standard definitions within this field of application.
+
+\begin{table}[H]
+\centering
+\caption{Common definitions used in the project.}
+\label{tab:def}
+\begin{tabular}{ll}
+\hline
+\textbf{trajectory}        & \begin{tabular}[c]{@{}l@{}}A trajectory, or trace, consists of a sequence of points \\ $(p_1, t_1), (p_2, t_2), \ldots$ where $p_i$ is the \\ position at time $t_i$ such that $\forall i < j, t_i < t_j$.\end{tabular} \\
+                           &                                                                                                                                                                                                                         \\
+\textbf{trace}             & See trajectory.                                                                                                                                                                                                         \\
+                           &                                                                                                                                                                                                                         \\
+\textbf{intersection node} & \begin{tabular}[c]{@{}l@{}}Crossings or intersections are represented by \\ intersection nodes. These nodes are connected to at \\ least three roads.\end{tabular}                                                      \\
+                           &                                                                                                                                                                                                                         \\
+\textbf{segment}           & \begin{tabular}[c]{@{}l@{}}Segments are roads going from one intersection node \\ to another. Together all segments makes up the road\\ network.\end{tabular}                                                           \\
+                           &                                                                                                                                                                                                                         \\
+\textbf{edge}              & \begin{tabular}[c]{@{}l@{}}Each segment consists of one or more edges which \\ together makes up the shape of the segment.\end{tabular}                                                                                 \\
+                           &                                                                                                                                                                                                                         \\
+\textbf{intermediate node} & \begin{tabular}[c]{@{}l@{}}Segments with more than one edge has at least one \\ intermediate node.\end{tabular}                                                                                                         \\ \hline
+\end{tabular}
+\end{table}
+
+
+\section{Related work}
+
+Change detection is a research area where, depending on the type of data that is to be analysed, different approaches are to be preferred. Firstly, we present an overview of general change detection; both methodologies, applications and sensors. Then, we present current state of the art map generation and change detection using \ac{GPS} data.
+
+
+\subsection{Change detection in general}
+
+% Change detection in general
+The aim of change detection is to analyse the dynamic evolution in a scene. There can be many explanations for these developments such as appearing or disappearing objects and movement \citep{linalg}. 
+
+% Mapping environment
+To be able to detect changes one needs to map the environment where changes are to be detected. On \ac{AD} and \ac{ADAS} vehicles several sensors collect information about the surroundings and position, such as cameras, \ac{LiDAR}, \ac{RADAR} and \ac{GPS}. There are many methods for obtaining a map and furthermore multiple ways of actually representing the environment. It has been of interest for many years to map environments using moving sensor platforms, one active area of research is that of indoor mapping for robot navigation \citep{1988robot} \citep{Teller2003} \citep{robnav}. One can see the environment mapping as a \ac{SLAM} problem. To solve this various filtering techniques have been proposed. Another suggestion is using the GraphSLAM algorithm to generate a map \citep{GraphSLAM}. % lane markers
+
+%Robustness against noise and the ability to cope with low quality images and different illumination conditions is an important issue in many surveillance applications.
+
+% Using images
+Within the area of image analysis pixel-based change detection methods are explored by e.g. \cite{pixelbased}. A basic type of change between images can here be detected simply by image differences.
+
+Change detection using a vector model of images has been explored by \cite{linalg}. Using this approach enabled incorporating useful theorems from linear algebra. Especially they found linear dependence and independence to be of great use. Their application was mainly change detection methods for intruder surveillance systems. 
+
+% \cite{imsurvey} presents a survey of different methods used for change detection in remote sensing and video surveillance. Given an image sequence, the more sophisticated methods study the spatial or temporal evolution of nearby pixels, by for example modelling the pixel intensities over time as an autoregressive process. 
+%Classical approaches are here fitting intensity values in a block to a polynomial function or modelling the pixel intensities over time as an autoregressive process. Given a spatial or temporal model, changes in model parameters are detected by hypothesis testing.
+
+\cite{satellite} and \cite{sat2} present two approaches for road extraction and change detection using satellite images. \cite{sat2} uses a neural network to distinguish roads in the image and uses a particle filter to link adjacent segments and update the old road-network graph. \cite{satellite} presents an automatic procedure for change detection in an existing road network given a new satellite image using statistics in the image and ``ziplock snakes''. It is an energy minimising technique that takes image features such as edges into account. Using satellite images to extract road networks is one common method, although obtaining high-resolution satellite images is costly \citep{hymu}.
+
+%\cite{satellite} presents an automatic procedure for change detection in an existing road network given a new satellite image and matches a new image to the current network using ''ziplock snakes'', an energy minimising technique that takes image features such as edges into account. Statistics in the image is 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%New-> den andra aritikeln:
+%Sebastian Thrun - father of AD. Visar att vi har lite koll när vi nämner the big guys. 
+%Slam och varianter av det - bok på confluence
+
+%s. 9 change detection. Helikoptrar som tittar på bilder. False change detection. 
+%Baseras på linalg. Här är ett modernt papper på hur det används (moderna metoder) 
+%Lidar change detection. Image analysis. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%thrun.graphslam:
+%Slam, kalman-liknande filter. Probabilistiska m-BW eller liknande i bakgrunden. Slam-approach för att skapa en karta. Helt annan än den vi tänkt nu. Hur skulle vi kunna göra detta? Använder både gps och imu (kanske mer)
+%Belief propagation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Alla andra artiklar typ:
+%Det finns folk som jobbat med vägkartor (alla de 100 han skickade tidigare) snakemodeller. Deep learning. Välj ett par (3-4 st) med satellitdata och säg att de finns. 
+%Lägg någon dag att kolla på abstracts och conslusitons. Då blir det fin bakgrund.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Change detection using \ac{GPS} data}
+% Using GPS data
+
+% GPS - lane level
+In this thesis \ac{GPS} data will be used for detecting change. The interest of using \ac{GIS} in automotive applications has increased the past couple of years \citep{hummel}. There has been several studies performed on \ac{GPS} satellite data. \cite{yang:lanelev} present an approach for change detection at lane level using \ac{GPS} data. A fuzzy-logic road network matching method is used and both topological and geometrical changes to the road network were detected, such as added and closed lanes or lane-changing and turning rules. \cite{yang:lanelev} estimates the positional accuracy needed for this type of change detection to about 1 m. % \textbf{This level of accuracy cannot currently be obtained with consumer grade \ac{GPS}.} This method could however be explored in future work. 
+
+% HMM
+To model the road network \cite{biagioni:gis12} uses a mathematical model called \ac{HMM}. The \ac{HMM} representation is used when performing the map matching of observations to the road network by using dynamic programming. There has been several academic papers published on this topic. Another paper using \ac{HMM} for map matching is \citep{newson:hmm}.
+
+% GPS - clustering
+\cite{kondaveeti:clusters} studies detection of changes within and between clusters of trajectories of \ac{GPS} points. By modelling the trajectories using an \ac{HMM} the change detection problem is mapped to change detection in the parameters of the \ac{HMM}. A change in the road network can then be detected by an emerging cluster of trajectories, tested against the null case using a log-likelihood statistic. 
+
+An active research area is to detect changes by automatic map inference using \ac{GPS} position data. The current state of the art for creating inferred maps can be divided into three categories \citep{4inBiagioni}:
+\begin{itemize}
+    \item \textit{k}-Means Clustering
+    \item Trace Merging
+    \item \ac{KDE}.
+\end{itemize}
+
+% skriv kort om de tre enligt biagioni referenser
+\cite{edelkamp} proposed, using the \textit{k}-means algorithm, a method where a number of cluster seeds are placed at locations based on trace data being an initial guess. Their positions are further refined using methods based on the \textit{k}-means algorithm to best describe the raw data. Using these raw traces the seeds are linked together shaping the road network. 
+
+Standard trace-merging methods iterates through traces of \ac{GPS} points and edges from these traces are added if there does not already exist a similar edge, looking at position and bearing, nearby. If it already exists the weight is incremented. \cite{cao} chooses to introduce a physical attraction between \ac{GPS} points. The closer the \ac{GPS} points are, the stronger the attraction. This reduces the effect of errors from the \ac{GPS} data and pulls \ac{GPS} points closer to the actual road centerlines. 
+
+Using \ac{KDE} to create an inferred map consists of three steps. First, an approximate \ac{KDE} is computed over the area of interest. That is then thresholded creating a binary pixel representation of the road and then finally some method is used to obtain the road centerlines. A suggested method for doing this is proposed by \cite{davies} using a contour follower to first extract the outlines of the map \citep{kde24} and then the Voronoi graph of points to find the road centerlines \citep{kde25}. 
+
+For interested readers \cite{4inBiagioni} describes other articles that further refines the proposed methods above. 
+
+% k means chalmers, however if noisy -> biagioni och jakob (L)
+In a master's thesis written by \cite{chalmers} for Volvo Car Corporation the methods were evaluated based on their ability to continuously update the map given new observations. For this purpose, trace-merging and $k$-means were found to be most efficient and also the most accurate. However, the tests were performed in a low noise area. These methods are in general not very robust to noise, which was demonstrated by \cite{biagioni:gis12} with traces collected in an area with high buildings.
+
+% GPS - skeletonization: fusion of image analysis and gps
+To handle noisy areas an approach using \ac{KDE} is provided by \cite{biagioni:gis12}. They use \ac{GPS} data to create a map based on a grey-level skeletonization method. 
+
+% Previous work on map updating
+Another common approach for map updating is to map match trajectories to an existing map and then create new roads only from unmatched traces. \cite{crowdatlas} suggest one such approach where unmatched trajectory segments are aggregated using a clustering algorithm according to the Hausdorff distance. New roads are then generated from each new cluster when the size exceeds a fixed threshold. \cite{glue} uses a similar approach, but takes directionality of the points making up the traces into account. They then do a polyline fitting of each cluster to obtain the new roads.
+
+% Our approach
+Our approach in this master's thesis is to use previous work from \cite{biagioni:gis12} as a basis to initially create a map. This map will then be used to detect changes such as adding a road to the current road network. Furthermore the possibility of removing a road from the current road network will be explored.
+
+
+%change detection inferred maps
+%\url{https://www.researchgate.net/publication/262004672_Segmentation-Based_Road_Network_Construction}
+%\url{https://www.researchgate.net/publication/262169326_Mining_Large-Scale_GPS_Streams_for_Connectivity_Refinement_of_Road_Maps}
+
+\section{Outline}
+
+\begin{description}
+    \item[Chapter 2] This chapter provides an introduction to ...nvaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of 
+\end{description}
+
+\begin{description}
+    \item[Chapter 3] 
+\end{description}
+
+\begin{description}
+    \item[Chapter 4] 
+\end{description}
+
+\begin{description}
+    \item[Chapter 5] 
+\end{description}
+
